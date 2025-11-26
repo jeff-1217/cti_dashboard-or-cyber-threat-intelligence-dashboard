@@ -184,7 +184,7 @@ For **MongoDB Atlas** (cloud):
 MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/
 ```
 
-## 🛠️ API Endpoints
+## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
