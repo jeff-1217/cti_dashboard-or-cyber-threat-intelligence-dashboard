@@ -2,7 +2,7 @@
 
 A real-time Flask-based dashboard that aggregates threat intelligence data from multiple APIs (VirusTotal, AbuseIPDB) and provides visualization, lookup, and export capabilities.
 
-## 🎯 Features
+## Features
 
 - **Real-time Threat Intelligence**: Aggregates data from VirusTotal and AbuseIPDB APIs
 - **Interactive Dashboard**: Visual charts showing threat categories, trends, and top malicious IPs
@@ -13,7 +13,7 @@ A real-time Flask-based dashboard that aggregates threat intelligence data from 
 - **JSON API**: Access threat feeds programmatically via `/api/feeds`
 - **Dark Theme UI**: Modern, clean interface built with Bootstrap 5
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 cti_dashboard/
@@ -42,7 +42,7 @@ cti_dashboard/
 └── exports/               # Generated export files (created automatically)
 ```
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ cti_dashboard/
 7. **Access the dashboard:**
    Open your browser and navigate to `http://localhost:5000`
 
-## 🔑 API Keys Setup
+##  API Keys Setup
 
 ### VirusTotal API Key
 
@@ -128,7 +128,7 @@ cti_dashboard/
 
 **Note:** Free tier allows 1,000 requests per day
 
-## 📊 Usage
+## Usage
 
 ### Dashboard
 
@@ -166,7 +166,7 @@ curl http://localhost:5000/api/feeds
 curl http://localhost:5000/api/feeds?limit=50&skip=0
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Scheduler Interval
 
@@ -198,7 +198,7 @@ MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/
 | `/api/export/csv` | POST | Export threats as CSV |
 | `/api/export/pdf` | POST | Export threats as PDF |
 
-## 📝 Example API Usage
+## Example API Usage
 
 ### Lookup IP Address
 
@@ -225,7 +225,7 @@ curl -X POST http://localhost:5000/api/export/csv \
   -o threats_export.csv
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### MongoDB Connection Issues
 
@@ -244,7 +244,7 @@ curl -X POST http://localhost:5000/api/export/csv \
 - Ensure all dependencies are installed: `pip install -r requirements.txt`
 - Check Python version: `python --version` (requires 3.8+)
 
-## 🔒 Security Notes
+## Security Notes
 
 - **Never commit your `.env` file** to version control
 - Change `SECRET_KEY` in production
@@ -252,7 +252,7 @@ curl -X POST http://localhost:5000/api/export/csv \
 - Consider implementing authentication for production use
 - Rate limit API endpoints to prevent abuse
 
-## 📦 Dependencies
+## Dependencies
 
 - **Flask**: Web framework
 - **pymongo**: MongoDB driver
@@ -262,7 +262,7 @@ curl -X POST http://localhost:5000/api/export/csv \
 - **reportlab**: PDF generation
 - **python-dotenv**: Environment variable management
 
-## 🎨 Technologies Used
+## Technologies Used
 
 - **Backend**: Python, Flask
 - **Database**: MongoDB
@@ -271,18 +271,9 @@ curl -X POST http://localhost:5000/api/export/csv \
 - **Scheduling**: APScheduler
 - **Export**: Pandas, ReportLab
 
-## 📄 License
+## License
 
 This project is provided as-is for educational and research purposes.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
-## 📧 Support
-
-For issues or questions, please open an issue on the repository.
-
 ---
 
 **Note:** This tool is for authorized security testing and threat intelligence purposes only. Always ensure you have permission to scan or analyze systems and follow applicable laws and regulations.
