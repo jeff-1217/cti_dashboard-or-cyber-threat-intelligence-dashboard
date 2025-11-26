@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP/Domain Lookup - CTI Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                🛡️ CTI Dashboard
+            </a>
+            <div class="navbar-nav flex-row">
+                <a class="nav-link" href="/">Dashboard</a>
+                <a class="nav-link active" href="/lookup">Lookup</a>
+                <a class="nav-link" href="/export">Export</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">IP/Domain Threat Lookup</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="lookup-form">
+                            <div class="mb-3">
+                                <label for="query" class="form-label">Enter IP Address or Domain</label>
+                                <input type="text" class="form-control" 
+                                       id="query" placeholder="e.g., 8.8.8.8 or example.com" required>
+                                <div class="form-text">
+                                    Enter an IP address (IPv4) or domain name to check against threat intelligence databases
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="lookup-btn">
+                                <span class="spinner-border spinner-border-sm d-none" id="spinner"></span>
+                                Check Threat Status
+                            </button>
+                        </form>
+
+                        <!-- Results Section -->
+                        <div id="results" class="mt-4 d-none">
+                            <hr>
+                            <h5 class="mb-4">Threat Analysis Results</h5>
+                            
+                            <div class="alert alert-info" id="status-alert">
+                                <strong>Status:</strong> <span id="status-text"></span>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Threat Score</h6>
+                                            <h3 class="card-text" id="threat-score">0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Confidence</h6>
+                                            <h3 class="card-text" id="confidence">0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <strong>Country:</strong> <span id="country" class="text-muted">Unknown</span><br>
+                                <strong>Tags:</strong> <span id="tags" class="text-muted">None</span>
+                            </div>
+
+                            <!-- VirusTotal Results -->
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h6 class="mb-0">VirusTotal Results</h6>
+                                </div>
+                                <div class="card-body" id="vt-results">
+                                    <p class="text-muted">Loading...</p>
+                                </div>
+                            </div>
+
+                            <!-- AbuseIPDB Results -->
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h6 class="mb-0">AbuseIPDB Results</h6>
+                                </div>
+                                <div class="card-body" id="abuse-results">
+                                    <p class="text-muted">Loading...</p>
+                                </div>
+                            </div>
+
+                            <!-- Manual Tagging -->
+                            <div class="mt-4">
+                                <h6 class="mb-3">Add Manual Tag</h6>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" 
+                                           id="manual-tag" placeholder="e.g., phishing, brute-force">
+                                    <button class="btn btn-outline-secondary" id="add-tag-btn">Add Tag</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/lookup.js') }}"></script>
+</body>
+</html>
+

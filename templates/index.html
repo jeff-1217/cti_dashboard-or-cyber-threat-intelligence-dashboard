@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Threat Intelligence Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                 CTI Dashboard
+            </a>
+            <div class="navbar-nav flex-row">
+                <a class="nav-link active" href="/">Dashboard</a>
+                <a class="nav-link" href="/lookup">Lookup</a>
+                <a class="nav-link" href="/export">Export</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-4">Cyber Threat Intelligence Dashboard</h1>
+                <p class="lead text-muted">Real-time threat intelligence aggregation and analysis</p>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Threats</h5>
+                        <h2 class="card-text" id="total-threats">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-danger">
+                    <div class="card-body">
+                        <h5 class="card-title">High Risk</h5>
+                        <h2 class="card-text" id="high-risk">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">Medium Risk</h5>
+                        <h2 class="card-text" id="medium-risk">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Low Risk</h5>
+                        <h2 class="card-text" id="low-risk">0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Threat Categories</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="categoryChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Threats Over Time (Last 7 Days)</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="timelineChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Malicious IPs -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Top 10 Malicious IPs</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>IP Address</th>
+                                        <th>Threat Score</th>
+                                        <th>Confidence</th>
+                                        <th>Country</th>
+                                        <th>Tags</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="top-ips-table">
+                                    <tr>
+                                        <td colspan="5" class="text-center">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
+
